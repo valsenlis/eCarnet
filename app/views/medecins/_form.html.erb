@@ -1,0 +1,45 @@
+<%= form_for @medecin, :html => { :class => "form-horizontal medecin" } do |f| %>
+
+    <% if @medecin.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@medecin.errors.count, "error") %> prohibited this medecin from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @medecin.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :nom, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :nom, :class => 'form-control' %>
+    </div>
+    <%= error_span(@medecin[:nom]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :lieu, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :lieu, :class => 'form-control' %>
+    </div>
+    <%= error_span(@medecin[:lieu]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :specialite, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :specialite, :class => 'form-control' %>
+    </div>
+    <%= error_span(@medecin[:specialite]) %>
+  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            medecins_path, :class => 'btn btn-default' %>
+
+<% end %>
