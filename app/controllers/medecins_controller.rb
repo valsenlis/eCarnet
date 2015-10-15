@@ -93,7 +93,7 @@ class MedecinsController < ApplicationController
     end
 
     # On ajoute les paramètres qu'on va envoyer avec le booking
-    def presciption_params
-      params.require(:prescription).permit(:texte, :date, :duree)
+    def prescription_params
+      params.require(:prescription).permit(:texte, :duree)
     end
 end
