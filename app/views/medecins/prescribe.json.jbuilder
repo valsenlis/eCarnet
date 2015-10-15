@@ -1,0 +1,1 @@
+json.extract! @prescription, :id, :texte, :date, :duree

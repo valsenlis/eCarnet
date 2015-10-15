@@ -1,5 +1,8 @@
 class MedecinsController < ApplicationController
-  before_action :set_medecin, only: [:show, :edit, :update, :destroy]
+  before_action :set_medecin, only: [:show, :edit, :update, :destroy, :prescribe]
+
+  # On saute une etape de securite si on appel PRESCRIBE en JSON
+  skip_before_action :verify_authenticity_token, only: [:prescribe]
 
   # GET /medecins
   # GET /medecins.json
@@ -61,6 +64,23 @@ class MedecinsController < ApplicationController
     end
   end
 
+  # POST /medecins/1/prescribe.json
+  def prescribe
+    # On crée un nouvel objet Prescription à partir des paramètres reçus
+    @prescription = Prescription.new(prescription_params)
+    # On précise que cet object Prescription dépend du Médecin et du Patient
+    @prescription.medecin = @medecin
+    @prescription.patient = @patient
+
+    respond_to do |format|
+      if @prescription.save
+        format.json
+      else
+        format.json { render json: @prescription.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_medecin
@@ -70,5 +90,10 @@ class MedecinsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def medecin_params
       params.require(:medecin).permit(:nom, :lieu, :specialite)
+    end
+
+    # On ajoute les paramètres qu'on va envoyer avec le booking
+    def presciption_params
+      params.require(:prescription).permit(:texte, :date, :duree)
     end
 end

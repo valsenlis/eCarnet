@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :patients
   resources :medecins
   get 'home/index'
 
@@ -60,6 +61,8 @@ Rails.application.routes.draw do
   #   end
 
 root 'home#index'
+
+post 'medecins/:id/prescribe' => 'medecins#prescribe'
 end
 
 
