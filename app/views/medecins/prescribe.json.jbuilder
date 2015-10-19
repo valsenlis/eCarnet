@@ -1,1 +1,1 @@
-json.extract! @prescription, :id, :texte, :duree
+json.extract! @prescription, :patient_id, :texte, :duree
