@@ -1,7 +1,7 @@
 class MedecinsController < ApplicationController
   before_action :set_medecin, only: [:show, :edit, :update, :destroy, :prescribe]
 
-  # On saute une etape de securite si on appel PRESCRIBE en JSON
+  # On saute une etape de securite si on appelle PRESCRIBE en JSON
   skip_before_action :verify_authenticity_token, only: [:prescribe]
 
   # GET /medecins
@@ -67,10 +67,11 @@ class MedecinsController < ApplicationController
   # POST /medecins/1/prescribe.json
   def prescribe
     # On crée un nouvel objet Prescription à partir des paramètres reçus
+  
     @prescription = Prescription.new(prescription_params)
+
     # On précise que cet object Prescription dépend du Médecin et du Patient
     @prescription.medecin = @medecin
-    @prescription.patient = @patient
 
     respond_to do |format|
       if @prescription.save
@@ -94,6 +95,6 @@ class MedecinsController < ApplicationController
 
     # On ajoute les paramètres qu'on va envoyer avec le booking
     def prescription_params
-      params.require(:prescription).permit(:texte, :duree)
+      params.require(:prescription).permit(:patient_id, :texte, :duree)
     end
 end
