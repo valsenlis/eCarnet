@@ -14,7 +14,9 @@ class MedecinsController < ApplicationController
   # GET /medecins/1.json
   def show
   end
-
+def patients
+  @patients = Patient.find(params[@medecin.prescritption.patient_id]) 
+end
   # GET /medecins/new
   def new
     @medecin = Medecin.new

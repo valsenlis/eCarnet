@@ -4,7 +4,7 @@ class CreateMedecins < ActiveRecord::Migration
       t.string :nom
       t.string :lieu
       t.string :specialite
-      t.string :image
+      
 
       t.timestamps null: false
     end
