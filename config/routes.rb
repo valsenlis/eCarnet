@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'home/index'
 
   get 'home/index'
-  get 'medecins/:id/patients' => 'medecins#patients'
+  get 'medecins/:id/listepatients' => 'medecins#listepatients'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

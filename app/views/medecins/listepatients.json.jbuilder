@@ -1,0 +1,1 @@
+json.extract! @listepatients, :id, :name

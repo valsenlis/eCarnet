@@ -1,5 +1,5 @@
 class MedecinsController < ApplicationController
-  before_action :set_medecin, only: [:show, :edit, :update, :destroy, :prescribe]
+  before_action :set_medecin, only: [:show, :edit, :update, :destroy, :prescribe, :listepatients]
 
   # On saute une etape de securite si on appelle PRESCRIBE en JSON
   skip_before_action :verify_authenticity_token, only: [:prescribe]
@@ -14,9 +14,11 @@ class MedecinsController < ApplicationController
   # GET /medecins/1.json
   def show
   end
-def patients
-  @patients = Patient.find(params[@medecin.prescritption.patient_id]) 
-end
+
+  def listepatients
+    @patients = @medecin.patients
+  end
+
   # GET /medecins/new
   def new
     @medecin = Medecin.new
