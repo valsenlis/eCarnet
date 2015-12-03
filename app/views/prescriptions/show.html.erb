@@ -1,0 +1,24 @@
+<%- model_class = Prescription -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:nom) %>:</strong></dt>
+  <dd><%= @prescription.medecin.nom %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:nom) %>:</strong></dt>
+  <dd><%= @prescription.patient.nom %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:duree) %>:</strong></dt>
+  <dd><%= @prescription.duree %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:texte) %>:</strong></dt>
+  <dd><%= @prescription.texte %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:date) %>:</strong></dt>
+  <dd><%= @prescription.date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:answer1) %>:</strong></dt>
+  <dd><%= @prescription.questionnaire.answer1 %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:answer2) %>:</strong></dt>
+  <dd><%= @prescription.questionnaire.answer2 %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:answer3) %>:</strong></dt>
+  <dd><%= @prescription.questionnaire.answer3 %></dd>
+  
+</dl>

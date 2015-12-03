@@ -1,0 +1,26 @@
+<h1>Listing Patients</h1>
+
+<table>
+  <thead>
+    <tr>
+       <th>medecin</th>
+       <th>patient</th>
+       <th>duree</th>
+       <th>texte</th>
+       <th>date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @listeprescription.each do |prescription| %>
+      <tr>
+        <td><%= prescription.medecin.nom %></td>
+        <td><%= prescription.patient.nom %></td>
+        <td><%= prescription.duree %></td>
+        <td><%= prescription.texte %></td>
+        <td><%= prescription.date %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
